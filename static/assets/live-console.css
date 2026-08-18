@@ -1,0 +1,160 @@
+body.route-live {
+  --color-background: #080b0f;
+  --color-card: #101720;
+  --color-muted: #182230;
+  --color-border: #263445;
+  --color-primary: #2dd4bf;
+  --color-ring: #2dd4bf;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(45, 212, 191, .16), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(59, 130, 246, .12), transparent 24rem),
+    linear-gradient(180deg, #080b0f 0%, #0b1118 55%, #07090d 100%);
+}
+
+body.route-live::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .14;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, #000, transparent 78%);
+  z-index: 0;
+}
+
+body.route-live #root {
+  position: relative;
+  z-index: 1;
+}
+
+body.route-live header {
+  background: rgba(8, 11, 15, .86);
+  border-color: rgba(45, 212, 191, .18);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .04), 0 18px 50px rgba(0, 0, 0, .22);
+}
+
+body.route-live h1 {
+  letter-spacing: 0;
+}
+
+body.route-live main > div > div.p-4,
+body.route-live main > div > div.md\:p-6 {
+  animation: live-console-enter .42s ease-out both;
+}
+
+body.route-live .bg-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .015)),
+    rgba(16, 23, 32, .9);
+  border-color: rgba(148, 163, 184, .18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+
+body.route-live .bg-card:has(img[alt="Live video feed"]),
+body.route-live .bg-card:has(.lucide-video-off) {
+  border-color: rgba(45, 212, 191, .32);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .38), 0 0 0 1px rgba(45, 212, 191, .08) inset;
+}
+
+body.route-live .aspect-video {
+  background:
+    linear-gradient(135deg, rgba(45, 212, 191, .12), transparent 35%),
+    radial-gradient(circle at center, rgba(15, 23, 42, .85), #05070a 68%);
+}
+
+body.route-live .aspect-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(45, 212, 191, .42) 1px, transparent 1px),
+    linear-gradient(rgba(45, 212, 191, .24) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: .18;
+  z-index: 2;
+}
+
+body.route-live .aspect-video::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  top: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(45, 212, 191, .95), transparent);
+  box-shadow: 0 0 18px rgba(45, 212, 191, .85);
+  animation: live-scan 2.6s linear infinite;
+  z-index: 3;
+}
+
+body.route-live .aspect-video img,
+body.route-live .aspect-video video,
+body.route-live .aspect-video canvas {
+  position: relative;
+  z-index: 1;
+}
+
+body.route-live button,
+body.route-live select,
+body.route-live input {
+  border-radius: 7px;
+}
+
+body.route-live button:not(:disabled) {
+  transition: transform .16s ease, border-color .16s ease, background-color .16s ease;
+}
+
+body.route-live button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+body.route-live .text-success,
+body.route-live .text-primary {
+  text-shadow: 0 0 18px rgba(45, 212, 191, .24);
+}
+
+body.route-live .bg-success\/10,
+body.route-live .bg-destructive\/10 {
+  background: rgba(15, 23, 42, .62);
+}
+
+body.route-live .max-h-\[400px\] > div {
+  border: 1px solid rgba(148, 163, 184, .12);
+}
+
+body.route-live .border-dashed {
+  background:
+    linear-gradient(135deg, rgba(45, 212, 191, .06), rgba(59, 130, 246, .04)),
+    rgba(15, 23, 42, .72);
+}
+
+@media (max-width: 768px) {
+  body.route-live .aspect-video::before {
+    background-size: 52px 52px;
+  }
+}
+
+@keyframes live-scan {
+  0% { transform: translateY(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateY(58vw); opacity: 0; }
+}
+
+@keyframes live-console-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI CCTV - Enterprise AI-Powered Surveillance System" />
+  <title>AI CCTV | Version 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (() => {
+      const syncRouteClass = () => {
+        document.body.classList.toggle('route-live', window.location.pathname === '/live');
+      };
+      ['pushState', 'replaceState'].forEach((name) => {
+        const original = history[name];
+        history[name] = function (...args) {
+          const result = original.apply(this, args);
+          queueMicrotask(syncRouteClass);
+          return result;
+        };
+      });
+      window.addEventListener('popstate', syncRouteClass);
+      document.addEventListener('DOMContentLoaded', syncRouteClass);
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-BkCD6oYU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BWjELmNA.css">
+  <link rel="stylesheet" crossorigin href="/assets/live-console.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
